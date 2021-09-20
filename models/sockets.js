@@ -24,7 +24,7 @@ class Sockets {
         const {desk, agent} = user
         const ticket = this.ticketList.asignTicket(agent, desk)
         callback(ticket)
-
+        this.io.emit('assigned-tickets', this.ticketList.lastTickets)
       })
     })
 
