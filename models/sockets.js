@@ -19,6 +19,13 @@ class Sockets {
         const newTicket = this.ticketList.createTicket()
         callback(newTicket)
       })
+
+      socket.on('next-ticket-to-work', (user, callback) => {
+        const {desk, agent} = user
+        const ticket = this.ticketList.asignTicket(agent, desk)
+        callback(ticket)
+
+      })
     })
 
     this.io.on('disconnect', (socket) => {
